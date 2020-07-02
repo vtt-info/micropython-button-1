@@ -5,10 +5,10 @@ from micropython import schedule
 class Button:
     debounce_time_ms = 10
 
-    def __init__(self, pin_num: int, release_value=0):
+    def __init__(self, pin, release_value=0):
         self._on_press_callbacks = []
         self._on_release_callbacks = []
-        self.pin = Pin(pin_num, Pin.IN, Pin.PULL_DOWN)  # TODO pull
+        self.pin = pin
         self._debounce_timer = Timer(1)
         self._value = release_value
         self._release_value = release_value
